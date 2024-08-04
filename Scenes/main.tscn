@@ -38,6 +38,18 @@ shadow_enabled = true
 
 [node name="Decorations" type="Node3D" parent="."]
 
+[node name="WallBlock" parent="Decorations" instance=ExtResource("4_jbour")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.98168, 1.5, 8.00806)
+
+[node name="WallBlock2" parent="Decorations" instance=ExtResource("4_jbour")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.28168, 0.537597, 8.00806)
+
+[node name="WallBlock3" parent="Decorations" instance=ExtResource("4_jbour")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7, 1, 8)
+
+[node name="Node3D" parent="Decorations" instance=ExtResource("4_ekhbj")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 8, 3, -8)
+
 [node name="Lights" type="Node3D" parent="Decorations"]
 
 [node name="Lamp" parent="Decorations/Lights" instance=ExtResource("3_hqrc8")]
@@ -46,22 +58,4 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7.70917, 10.3526, -9.35
 [node name="Lamp2" parent="Decorations/Lights" instance=ExtResource("3_hqrc8")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.709169, 7.25263, 1.64621)
 
-[node name="Walls" type="Node3D" parent="Decorations"]
-
-[node name="WallBlock" parent="Decorations/Walls" instance=ExtResource("4_jbour")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.98168, 1.5, 8.00806)
-
-[node name="WallBlock2" parent="Decorations/Walls" instance=ExtResource("4_jbour")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.28168, 0.537597, 8.00806)
-
-[node name="WallBlock3" parent="Decorations/Walls" instance=ExtResource("4_jbour")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7, 1, 8)
-
-[node name="Stair" parent="Decorations/Walls" instance=ExtResource("4_ekhbj")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 8, 3, -8)
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Node3D2" type="Node3D" parent="Decorations"]
