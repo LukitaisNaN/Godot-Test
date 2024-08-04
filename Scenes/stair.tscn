@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b35235f70rogm"]
+
+[ext_resource type="PackedScene" uid="uid://di4skh115jadx" path="res://Models/Stair.glb" id="1_shxet"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a56yo"]
+points = PackedVector3Array(4.55, 2.35, -2.1, 4.55, 2.35, 3.1, 4.55, -2.4, -2.1, 4.55, -2.4, 3.1, -2.65, -2.4, 3.1, -2.65, -2.4, -2.1, -2.65, -1.7, -2.1, -2.65, -1.7, 3.1, 3.6, 2.35, 3.1, 3.6, 2.35, -2.1)
+
+[node name="Node3D" type="StaticBody3D"]
+
+[node name="Stair" parent="." instance=ExtResource("1_shxet")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 0.0999999, -0.5)
+shape = SubResource("ConvexPolygonShape3D_a56yo")

@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_yiwxx"]
 size = Vector3(1, 2.4696, 1)
 
-[node name="Node3D" type="Area3D"]
+[node name="Node3D" type="StaticBody3D"]
 
 [node name="Lamp2" parent="." instance=ExtResource("1_tjm41")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

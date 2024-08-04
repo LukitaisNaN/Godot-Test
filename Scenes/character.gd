@@ -1,13 +1,9 @@
 extends CharacterBody3D
 
 # Movement constants 
-const SPEED = 5.0
+const SPEED = 7.0
 const JUMP_VELOCITY = 4.5
 const MOUSE_SENSIVITY = 0.1
-
-# Rotation variables
-var prev_mouse_pos
-var next_mouse_pos
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -21,7 +17,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -39,6 +35,6 @@ func _physics_process(delta):
 	pass
 
 func _input(event):
-	if event is InputEventMouse:
+	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSIVITY))
 	

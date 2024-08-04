@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://4ygtmqrgvenj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g804c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h76uc"]
+albedo_color = Color(0.94902, 0.392157, 0.0980392, 1)
+metallic = 1.0
+roughness = 0.75
+emission_enabled = true
+emission = Color(0.94902, 0.392157, 0.0980392, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_oyotl"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_h76uc")
+
+[node name="Node3D" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_g804c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_oyotl")

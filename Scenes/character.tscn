@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3trif0h43kgy"]
+[gd_scene load_steps=5 format=3 uid="uid://b3trif0h43kgy"]
 
 [ext_resource type="PackedScene" uid="uid://db547smaw78s3" path="res://Models/capsule.glb" id="1_7bw6t"]
 [ext_resource type="Script" path="res://Scenes/character.gd" id="1_mfelb"]
+[ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="3_23g76"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bgtk6"]
 radius = 1.00338
@@ -16,3 +17,14 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0699265, 0)
 shape = SubResource("CapsuleShape3D_bgtk6")
+
+[node name="ThirdPersonCamera" parent="." instance=ExtResource("3_23g76")]
+transform = Transform3D(1, -1.09424e-11, 0, -7.24754e-13, 1, 5.82077e-11, 0, 0, 1, 0, 0, 0)
+distance_from_pivot = 3.5
+pivot_offset = Vector2(2, 1)
+initial_dive_angle_deg = -10.0
+tilt_upper_limit_deg = 30.0
+tilt_lower_limit_deg = -30.0
+camera_speed = 0.7
+mouse_follow = true
+mouse_x_sensitiveness = 3.0
