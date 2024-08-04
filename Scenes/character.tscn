@@ -19,7 +19,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0699265, 0)
 shape = SubResource("CapsuleShape3D_bgtk6")
 
 [node name="ThirdPersonCamera" parent="." instance=ExtResource("3_23g76")]
-transform = Transform3D(1, -1.09424e-11, 0, -7.24754e-13, 1, 5.82077e-11, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, -1.09424e-11, 0, -7.24754e-13, 1, 5.82077e-11, 0, 0, 1, 0.0181465, 0, 0.011785)
 distance_from_pivot = 3.5
 pivot_offset = Vector2(2, 1)
 initial_dive_angle_deg = -10.0
