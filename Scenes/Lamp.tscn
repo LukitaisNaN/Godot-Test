@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7oora8awahve"]
+
+[ext_resource type="PackedScene" uid="uid://b1dfnm85yjg6x" path="res://Models/Lamp.glb" id="1_tjm41"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yiwxx"]
+size = Vector3(1, 2.4696, 1)
+
+[node name="Node3D" type="Area3D"]
+
+[node name="Lamp2" parent="." instance=ExtResource("1_tjm41")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.637395, 0.454944, 0.00792289)
+omni_range = 1.0
+omni_attenuation = 2.21914
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.64513, 0.459006, 0.0162542)
+omni_range = 1.0
+omni_attenuation = 2.21914
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000607967, 0.455402, 0.670657)
+omni_range = 1.0
+omni_attenuation = 2.21914
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.184729, 0.468341, -0.715031)
+omni_range = 1.0
+omni_attenuation = 2.21914
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23565, 0)
+shape = SubResource("BoxShape3D_yiwxx")

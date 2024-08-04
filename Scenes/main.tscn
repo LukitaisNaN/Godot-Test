@@ -1,16 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6al88d6301l"]
+[gd_scene load_steps=7 format=3 uid="uid://c6al88d6301l"]
 
 [ext_resource type="PackedScene" uid="uid://b3trif0h43kgy" path="res://Scenes/character.tscn" id="1_0gc81"]
+[ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="2_h57l8"]
+[ext_resource type="PackedScene" uid="uid://c7oora8awahve" path="res://Scenes/Lamp.tscn" id="3_hqrc8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dugg3"]
 albedo_color = Color(0.262932, 0.262932, 0.262932, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_r313d"]
 material = SubResource("StandardMaterial3D_dugg3")
-size = Vector2(10, 10)
+size = Vector2(30, 30)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2uv27"]
-size = Vector3(10, 2, 10)
+size = Vector3(30, 2, 30)
 
 [node name="Scene" type="Node"]
 
@@ -27,19 +29,19 @@ shape = SubResource("BoxShape3D_2uv27")
 [node name="character" parent="." instance=ExtResource("1_0gc81")]
 transform = Transform3D(-0.5, -3.40923e-05, -0.000176563, -3.40339e-05, 0.5, -0.000190314, 0.000176574, -0.000190304, -0.5, 0.0562434, 3.11752, 0.16582)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.663965, 0.352424, -0.659505, 0, 0.881971, 0.471304, 0.747763, -0.31293, 0.585598, -1.81637, 3.57652, 3.25195)
-fov = 90.0
+[node name="ThirdPersonCamera" parent="character" instance=ExtResource("2_h57l8")]
+transform = Transform3D(1, -1.09424e-11, 0, -7.24754e-13, 1, 5.82077e-11, 0, 0, 1, 0, 0, 0)
+distance_from_pivot = 3.5
+pivot_offset = Vector2(2, 1)
+initial_dive_angle_deg = -10.0
+mouse_follow = true
+mouse_x_sensitiveness = 3.0
 
 [node name="lights" type="Node" parent="."]
-
-[node name="Lantern" type="SpotLight3D" parent="lights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.07549, 4.51131, -0.866181)
-light_color = Color(0.498039, 0.027451, 0.6, 1)
-light_energy = 14.289
-spot_range = 8.948
-spot_angle = 30.0
 
 [node name="Sun" type="DirectionalLight3D" parent="lights"]
 transform = Transform3D(0.713165, 0.537246, -0.450292, 0, 0.64236, 0.766403, 0.700996, -0.546572, 0.458108, 0.538952, 8.9414, -0.118779)
 shadow_enabled = true
+
+[node name="Node3D" parent="." instance=ExtResource("3_hqrc8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.290831, 0.752634, 2.64621)
