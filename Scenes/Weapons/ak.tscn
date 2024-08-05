@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1he4hfvphs4d"]
+
+[ext_resource type="PackedScene" uid="uid://c3i8tjhioxebx" path="res://zModels/ak.glb" id="1_bgoww"]
+[ext_resource type="Texture2D" uid="uid://ddlitq1pt4r2" path="res://Textures/materials/woodMaterial.jpg" id="2_7s0em"]
+[ext_resource type="Texture2D" uid="uid://dipqcdfe6femo" path="res://Textures/materials/metal.jpg" id="3_ud23u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lofvf"]
+albedo_color = Color(0.716639, 0.731273, 0.69918, 1)
+albedo_texture = ExtResource("2_7s0em")
+uv1_scale = Vector3(0.384, 0.384, 0.384)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyiya"]
+cull_mode = 2
+albedo_color = Color(0.329158, 0.329158, 0.329158, 1)
+albedo_texture = ExtResource("3_ud23u")
+uv1_scale = Vector3(0.013, 0.013, 0.013)
+uv1_triplanar = true
+
+[node name="ak" instance=ExtResource("1_bgoww")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_lofvf")
+surface_material_override/1 = SubResource("StandardMaterial3D_jyiya")

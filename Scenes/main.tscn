@@ -1,9 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6al88d6301l"]
+[gd_scene load_steps=6 format=3 uid="uid://c6al88d6301l"]
 
 [ext_resource type="PackedScene" uid="uid://b3trif0h43kgy" path="res://Scenes/character.tscn" id="1_0gc81"]
 [ext_resource type="PackedScene" uid="uid://cokct3u1euwr8" path="res://Scenes/Building-Res/enviorment.tscn" id="2_g8sk5"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jk1rv"]
+sky_top_color = Color(0.0823529, 0.584314, 0.772549, 1)
+sky_horizon_color = Color(0.535352, 0.65734, 0.700531, 1)
+ground_bottom_color = Color(0.0590545, 0.0450471, 0.029574, 1)
+ground_horizon_color = Color(0.535352, 0.65734, 0.700531, 1)
+
+[sub_resource type="Sky" id="Sky_edjvx"]
+sky_material = SubResource("ProceduralSkyMaterial_jk1rv")
+
+[sub_resource type="Environment" id="Environment_5et8n"]
+background_mode = 2
+sky = SubResource("Sky_edjvx")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="Scene" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5et8n")
 
 [node name="character" parent="." instance=ExtResource("1_0gc81")]
 transform = Transform3D(-0.5, -3.40923e-05, -0.000176563, -3.40339e-05, 0.5, -0.000190314, 0.000176574, -0.000190304, -0.5, -1.02415, 4.51201, 1.66962)

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://841j4fyq7r4d"
-path.s3tc="res://.godot/imported/checkers.png-f191e5f6a9c6b9d1ed4f88a232fefae8.s3tc.ctex"
+uid="uid://ddlitq1pt4r2"
+path.s3tc="res://.godot/imported/woodMaterial.jpg-c73876bb8069080b8cfdde2b7d758a50.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/checkers.png"
-dest_files=["res://.godot/imported/checkers.png-f191e5f6a9c6b9d1ed4f88a232fefae8.s3tc.ctex"]
+source_file="res://Textures/materials/woodMaterial.jpg"
+dest_files=["res://.godot/imported/woodMaterial.jpg-c73876bb8069080b8cfdde2b7d758a50.s3tc.ctex"]
 
 [params]
 

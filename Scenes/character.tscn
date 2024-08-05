@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3trif0h43kgy"]
+[gd_scene load_steps=6 format=3 uid="uid://b3trif0h43kgy"]
 
 [ext_resource type="PackedScene" uid="uid://db547smaw78s3" path="res://zModels/capsule.glb" id="1_7bw6t"]
 [ext_resource type="Script" path="res://Scenes/character.gd" id="1_mfelb"]
 [ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="3_23g76"]
+[ext_resource type="PackedScene" uid="uid://c1he4hfvphs4d" path="res://Scenes/Weapons/ak.tscn" id="4_bty7f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bgtk6"]
 radius = 1.00338
@@ -28,3 +29,6 @@ tilt_lower_limit_deg = -30.0
 camera_speed = 0.7
 mouse_follow = true
 mouse_x_sensitiveness = 3.0
+
+[node name="ak" parent="." instance=ExtResource("4_bty7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3048, 0.346695, -0.272437)
