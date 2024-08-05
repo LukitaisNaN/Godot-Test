@@ -1,31 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6al88d6301l"]
+[gd_scene load_steps=3 format=3 uid="uid://c6al88d6301l"]
 
 [ext_resource type="PackedScene" uid="uid://b3trif0h43kgy" path="res://Scenes/character.tscn" id="1_0gc81"]
-[ext_resource type="PackedScene" uid="uid://c7oora8awahve" path="res://Scenes/lamp.tscn" id="3_hqrc8"]
-[ext_resource type="PackedScene" uid="uid://b35235f70rogm" path="res://Scenes/stair.tscn" id="4_ekhbj"]
-[ext_resource type="PackedScene" uid="uid://4ygtmqrgvenj" path="res://Scenes/block.tscn" id="4_jbour"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dugg3"]
-albedo_color = Color(0.188235, 0.00392157, 0.117647, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_r313d"]
-material = SubResource("StandardMaterial3D_dugg3")
-size = Vector2(50, 50)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2uv27"]
-size = Vector3(50, 2, 50)
+[ext_resource type="PackedScene" uid="uid://cokct3u1euwr8" path="res://Scenes/Building-Res/enviorment.tscn" id="2_g8sk5"]
 
 [node name="Scene" type="Node"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.959855, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("PlaneMesh_r313d")
-
-[node name="Floor" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-shape = SubResource("BoxShape3D_2uv27")
 
 [node name="character" parent="." instance=ExtResource("1_0gc81")]
 transform = Transform3D(-0.5, -3.40923e-05, -0.000176563, -3.40339e-05, 0.5, -0.000190314, 0.000176574, -0.000190304, -0.5, -1.02415, 4.51201, 1.66962)
@@ -38,24 +16,8 @@ shadow_enabled = true
 
 [node name="Decorations" type="Node3D" parent="."]
 
-[node name="WallBlock" parent="Decorations" instance=ExtResource("4_jbour")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.98168, 1.5, 8.00806)
-
-[node name="WallBlock2" parent="Decorations" instance=ExtResource("4_jbour")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.501482, 5.19567, 8.00806)
-
-[node name="WallBlock3" parent="Decorations" instance=ExtResource("4_jbour")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7, 1, 8)
-
-[node name="Node3D" parent="Decorations" instance=ExtResource("4_ekhbj")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 18.4156, 2.84676, -8.84685)
-
 [node name="Lights" type="Node3D" parent="Decorations"]
 
-[node name="Lamp" parent="Decorations/Lights" instance=ExtResource("3_hqrc8")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 7.70917, 10.3526, -9.35379)
-
-[node name="Lamp2" parent="Decorations/Lights" instance=ExtResource("3_hqrc8")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.709169, 7.25263, 1.64621)
-
 [node name="Node3D2" type="Node3D" parent="Decorations"]
+
+[node name="Floor" parent="." instance=ExtResource("2_g8sk5")]

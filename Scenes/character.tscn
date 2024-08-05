@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3trif0h43kgy"]
 
-[ext_resource type="PackedScene" uid="uid://db547smaw78s3" path="res://Models/capsule.glb" id="1_7bw6t"]
+[ext_resource type="PackedScene" uid="uid://db547smaw78s3" path="res://zModels/capsule.glb" id="1_7bw6t"]
 [ext_resource type="Script" path="res://Scenes/character.gd" id="1_mfelb"]
 [ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="3_23g76"]
 

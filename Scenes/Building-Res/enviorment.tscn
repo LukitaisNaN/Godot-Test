@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://cokct3u1euwr8"]
+
+[ext_resource type="PackedScene" uid="uid://b0jn7fkda72pc" path="res://zModels/Floor.glb" id="1_alftb"]
+[ext_resource type="Texture2D" uid="uid://bcbwcq8n24hjk" path="res://Textures/green/texture_07.png" id="2_l65eg"]
+[ext_resource type="Texture2D" uid="uid://cr74a6rq3ky6b" path="res://Textures/purple/texture_01.png" id="3_itfyj"]
+[ext_resource type="Texture2D" uid="uid://b24sn0ycoed0a" path="res://Textures/dark/texture_08.png" id="4_y70ie"]
+[ext_resource type="Texture2D" uid="uid://dghhg5b60w1om" path="res://Textures/light/texture_07.png" id="4_ylrcn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0nbsi"]
+albedo_texture = ExtResource("2_l65eg")
+uv1_scale = Vector3(5, 5, 5)
+uv1_offset = Vector3(2.125, 0.495, 0)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvrkh"]
+cull_mode = 2
+albedo_texture = ExtResource("3_itfyj")
+uv1_scale = Vector3(5, 5, 5)
+uv1_offset = Vector3(0, -1.29, -1.465)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkipq"]
+albedo_color = Color(0.411765, 0.0784314, 0.054902, 1)
+albedo_texture = ExtResource("4_ylrcn")
+uv1_scale = Vector3(10, 10, 10)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wu42v"]
+cull_mode = 2
+albedo_texture = ExtResource("4_y70ie")
+uv1_triplanar = true
+
+[node name="Floor" instance=ExtResource("1_alftb")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0nbsi")
+surface_material_override/1 = SubResource("StandardMaterial3D_tvrkh")
+surface_material_override/2 = SubResource("StandardMaterial3D_kkipq")
+surface_material_override/3 = SubResource("StandardMaterial3D_wu42v")
+
+[node name="CollisionShape3D" parent="Plane/StaticBody3D" index="0"]
+visible = false
