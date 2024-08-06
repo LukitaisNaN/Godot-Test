@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3trif0h43kgy"]
+[gd_scene load_steps=15 format=3 uid="uid://b3trif0h43kgy"]
 
 [ext_resource type="PackedScene" uid="uid://db547smaw78s3" path="res://zModels/capsule.glb" id="1_7bw6t"]
 [ext_resource type="Script" path="res://Scenes/character.gd" id="1_mfelb"]
@@ -106,6 +106,22 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-1.27, -0.126, -0.724), Vector3(-1.27, -0.709, 0.042), Vector3(-1.27, -0.126, 0.648), Vector3(-1.27, -0.709, 0.042)]
+}
+
+[sub_resource type="Animation" id="Animation_yvwc0"]
+resource_name = "grenade_throw"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lhand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(2, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(-0.953962, -0.600573, -0.207558), Vector3(-0.953962, -0.755729, -0.682386), Vector3(-0.953962, 0.0131485, -1.15721)]
 }
 
 [sub_resource type="Animation" id="Animation_xlx4h"]
@@ -221,6 +237,7 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_vtwd3"),
 "Run": SubResource("Animation_txqra"),
+"grenade_throw": SubResource("Animation_yvwc0"),
 "idle": SubResource("Animation_xlx4h"),
 "jump": SubResource("Animation_hdndr"),
 "shoot": SubResource("Animation_3an4d")
