@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://mcjevvmoe3hn"]
+
+[ext_resource type="PackedScene" uid="uid://bmnfh0b43eyhd" path="res://zModels/grenade.glb" id="1_pylkv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ja5g"]
+albedo_color = Color(0.262932, 0.262932, 0.262932, 1)
+metallic = 0.3
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a652v"]
+albedo_color = Color(0.377919, 0.377919, 0.377919, 1)
+metallic = 1.0
+roughness = 0.33
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yjav"]
+albedo_color = Color(0.2, 0.47451, 0.192157, 1)
+metallic = 1.0
+roughness = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6deb2"]
+albedo_color = Color(0.29219, 0.29219, 0.29219, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djaej"]
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyejt"]
+albedo_color = Color(0.236955, 0.240515, 0.217238, 1)
+metallic = 0.75
+roughness = 0.0
+
+[node name="grenade" instance=ExtResource("1_pylkv")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5ja5g")
+surface_material_override/1 = SubResource("StandardMaterial3D_a652v")
+surface_material_override/2 = SubResource("StandardMaterial3D_1yjav")
+surface_material_override/3 = SubResource("StandardMaterial3D_6deb2")
+surface_material_override/4 = SubResource("StandardMaterial3D_djaej")
+surface_material_override/5 = SubResource("StandardMaterial3D_dyejt")
