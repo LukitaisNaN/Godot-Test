@@ -41,12 +41,16 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
-	if velocity and not velocity.y:
-		anim_player.play("Run")
+	
+	if Input.is_action_pressed("shoot"):
+		anim_player.play("shoot")
+	elif velocity and not velocity.y:
+			anim_player.play("Run")
 	elif velocity.y:
 		anim_player.play("jump")
 	else:
 		anim_player.play("idle")
+	
 	pass
 
 func _input(event):
@@ -56,5 +60,8 @@ func _input(event):
 		rotate_y(-event.relative.x * MOUSE_SENSIVITY)
 		camera.rotate_x(-event.relative.y * MOUSE_SENSIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
+	
+	#if Input.is_action_pressed("shoot"):
+		# Code shooting
 		
 	

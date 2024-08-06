@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3trif0h43kgy"]
+[gd_scene load_steps=14 format=3 uid="uid://b3trif0h43kgy"]
 
 [ext_resource type="PackedScene" uid="uid://db547smaw78s3" path="res://zModels/capsule.glb" id="1_7bw6t"]
 [ext_resource type="Script" path="res://Scenes/character.gd" id="1_mfelb"]
@@ -188,12 +188,42 @@ tracks/2/keys = {
 "values": [Vector3(1.12162, 0.253752, -1.31548), Vector3(-0.724168, -0.158142, -1.31548), Vector3(-1.17143, -0.880038, 0.13138)]
 }
 
+[sub_resource type="Animation" id="Animation_3an4d"]
+resource_name = "shoot"
+length = 0.15
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ak:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0727628, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lhand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector3(1.12162, 0.253752, -1.31548), Vector3(1.12162, 0.320564, -1.31548)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7yqob"]
 _data = {
 "RESET": SubResource("Animation_vtwd3"),
 "Run": SubResource("Animation_txqra"),
 "idle": SubResource("Animation_xlx4h"),
-"jump": SubResource("Animation_hdndr")
+"jump": SubResource("Animation_hdndr"),
+"shoot": SubResource("Animation_3an4d")
 }
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_psk7q"]
