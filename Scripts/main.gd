@@ -1,6 +1,6 @@
 extends Node
 
-@onready var main_menu = $Control/Main_Menu
+@onready var main_menu = $Canvas_Layer
 
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()

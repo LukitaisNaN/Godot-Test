@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://caiqp6whucf04"
-path.s3tc="res://.godot/imported/Lamp_LamPng.png-2101cd81f8ed7b4205661b0a142e90ab.s3tc.ctex"
+uid="uid://chyypsq4nf0x6"
+path.s3tc="res://.godot/imported/capsule_CapsuleImg.png-9c203e3b6f35a39e8afd460a3f4ed7ff.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b67fad752fa09a2047489d852e6a92ae"
+"md5": "74ec01dbc4b33dae8f277cb4fe5c8c88"
 }
 
 [deps]
 
-source_file="res://zModels/textures/Lamp_LamPng.png"
-dest_files=["res://.godot/imported/Lamp_LamPng.png-2101cd81f8ed7b4205661b0a142e90ab.s3tc.ctex"]
+source_file="res://zModels/capsule_CapsuleImg.png"
+dest_files=["res://.godot/imported/capsule_CapsuleImg.png-9c203e3b6f35a39e8afd460a3f4ed7ff.s3tc.ctex"]
 
 [params]
 
