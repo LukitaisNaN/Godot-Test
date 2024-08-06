@@ -3,20 +3,18 @@
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_5jgnt"]
 [ext_resource type="PackedScene" uid="uid://cokct3u1euwr8" path="res://Scenes/Building-Res/enviorment.tscn" id="2_g8sk5"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jk1rv"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4cx64"]
 sky_top_color = Color(0.0823529, 0.584314, 0.772549, 1)
 sky_horizon_color = Color(0.535352, 0.65734, 0.700531, 1)
-sky_curve = 5.32593
 ground_bottom_color = Color(0.0590545, 0.0450471, 0.029574, 1)
 ground_horizon_color = Color(0.535352, 0.65734, 0.700531, 1)
-sun_angle_max = 68.75
 
-[sub_resource type="Sky" id="Sky_edjvx"]
-sky_material = SubResource("ProceduralSkyMaterial_jk1rv")
+[sub_resource type="Sky" id="Sky_j360n"]
+sky_material = SubResource("ProceduralSkyMaterial_4cx64")
 
-[sub_resource type="Environment" id="Environment_5et8n"]
+[sub_resource type="Environment" id="Environment_scijb"]
 background_mode = 2
-sky = SubResource("Sky_edjvx")
+sky = SubResource("Sky_j360n")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -24,19 +22,13 @@ glow_enabled = true
 script = ExtResource("1_5jgnt")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5et8n")
+environment = SubResource("Environment_scijb")
 
 [node name="lights" type="Node" parent="."]
 
 [node name="Sun" type="DirectionalLight3D" parent="lights"]
 transform = Transform3D(0.713165, 0.537246, -0.450292, 0, 0.64236, 0.766403, 0.700996, -0.546572, 0.458109, 0.538952, 8.9414, -0.118779)
 shadow_enabled = true
-
-[node name="Decorations" type="Node3D" parent="."]
-
-[node name="Lights" type="Node3D" parent="Decorations"]
-
-[node name="Node3D2" type="Node3D" parent="Decorations"]
 
 [node name="Floor" parent="." instance=ExtResource("2_g8sk5")]
 
