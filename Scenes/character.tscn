@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3trif0h43kgy"]
+[gd_scene load_steps=12 format=3 uid="uid://b3trif0h43kgy"]
 
 [ext_resource type="PackedScene" uid="uid://db547smaw78s3" path="res://zModels/capsule.glb" id="1_7bw6t"]
 [ext_resource type="Script" path="res://Scenes/character.gd" id="1_mfelb"]
@@ -156,6 +156,17 @@ _data = {
 "idle": SubResource("Animation_xlx4h")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_psk7q"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Camera3D:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="character" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 2
@@ -188,5 +199,7 @@ layers = 5
 mesh = SubResource("SphereMesh_u0pxb")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.482085, -0.942959)
-cull_mask = 1048571
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.482085, -1.06428)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_psk7q")
