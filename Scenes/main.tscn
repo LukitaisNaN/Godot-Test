@@ -6,8 +6,10 @@
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jk1rv"]
 sky_top_color = Color(0.0823529, 0.584314, 0.772549, 1)
 sky_horizon_color = Color(0.535352, 0.65734, 0.700531, 1)
+sky_curve = 5.32593
 ground_bottom_color = Color(0.0590545, 0.0450471, 0.029574, 1)
 ground_horizon_color = Color(0.535352, 0.65734, 0.700531, 1)
+sun_angle_max = 68.75
 
 [sub_resource type="Sky" id="Sky_edjvx"]
 sky_material = SubResource("ProceduralSkyMaterial_jk1rv")
