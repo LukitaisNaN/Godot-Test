@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6al88d6301l"]
+[gd_scene load_steps=5 format=3 uid="uid://c6al88d6301l"]
 
-[ext_resource type="Script" path="res://Scripts/main.gd" id="1_5jgnt"]
 [ext_resource type="PackedScene" uid="uid://cokct3u1euwr8" path="res://Scenes/Building-Res/enviorment.tscn" id="2_g8sk5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4cx64"]
@@ -19,7 +18,6 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="World" type="Node"]
-script = ExtResource("1_5jgnt")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_scijb")
@@ -33,45 +31,3 @@ shadow_enabled = true
 [node name="Floor" parent="." instance=ExtResource("2_g8sk5")]
 
 [node name="Canvas_Layer" type="CanvasLayer" parent="."]
-
-[node name="Main_Menu" type="MarginContainer" parent="Canvas_Layer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -312.0
-offset_top = -129.0
-offset_right = 312.0
-offset_bottom = 130.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_right = 30
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Canvas_Layer/Main_Menu"]
-layout_mode = 2
-theme_override_constants/separation = 15
-alignment = 1
-
-[node name="MainMenu" type="Label" parent="Canvas_Layer/Main_Menu/VBoxContainer"]
-layout_mode = 2
-text = "Main Menu"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HostButton" type="Button" parent="Canvas_Layer/Main_Menu/VBoxContainer"]
-layout_mode = 2
-text = "Host"
-
-[node name="JoinButton" type="Button" parent="Canvas_Layer/Main_Menu/VBoxContainer"]
-layout_mode = 2
-text = "Join"
-
-[node name="ipButton" type="LineEdit" parent="Canvas_Layer/Main_Menu/VBoxContainer"]
-layout_mode = 2
-placeholder_text = "127.0.0.1"
-alignment = 1
-
-[connection signal="pressed" from="Canvas_Layer/Main_Menu/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
-[connection signal="pressed" from="Canvas_Layer/Main_Menu/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
