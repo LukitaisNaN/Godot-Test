@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3trif0h43kgy"]
+[gd_scene load_steps=13 format=3 uid="uid://b3trif0h43kgy"]
 
 [ext_resource type="PackedScene" uid="uid://db547smaw78s3" path="res://zModels/capsule.glb" id="1_7bw6t"]
 [ext_resource type="Script" path="res://Scenes/character.gd" id="1_mfelb"]
@@ -149,11 +149,51 @@ tracks/2/keys = {
 "values": [Vector3(-1.20021, -0.355442, -0.482517), Vector3(-1.20021, -0.149534, -0.482517)]
 }
 
+[sub_resource type="Animation" id="Animation_hdndr"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ak:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.12571, 0.424745, -0.427445), Vector3(1.12571, 0.0607884, 0.0208277)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ak:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.01055, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lhand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(0.5, 1, 0.5),
+"update": 0,
+"values": [Vector3(1.12162, 0.253752, -1.31548), Vector3(-0.724168, -0.158142, -1.31548), Vector3(-1.17143, -0.880038, 0.13138)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7yqob"]
 _data = {
 "RESET": SubResource("Animation_vtwd3"),
 "Run": SubResource("Animation_txqra"),
-"idle": SubResource("Animation_xlx4h")
+"idle": SubResource("Animation_xlx4h"),
+"jump": SubResource("Animation_hdndr")
 }
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_psk7q"]
@@ -192,6 +232,7 @@ skeleton = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_7yqob")
 }
+playback_default_blend_time = 0.5
 
 [node name="Lhand" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.595953, 0.803019, 0, -0.803019, 0.595953, 1.12162, 0.253752, -1.31548)

@@ -1,13 +1,13 @@
 extends CharacterBody3D
 
 @onready var camera = $Camera3D
+@onready var anim_player = $AnimationPlayer
 
 # Movement constants 
 const SPEED = 10.0
 const JUMP_VELOCITY = 9
 const MOUSE_SENSIVITY = 0.01
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 20
 
 func _enter_tree():
@@ -41,7 +41,12 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
-	
+	if velocity and not velocity.y:
+		anim_player.play("Run")
+	elif velocity.y:
+		anim_player.play("jump")
+	else:
+		anim_player.play("idle")
 	pass
 
 func _input(event):
