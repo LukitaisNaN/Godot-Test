@@ -12,17 +12,19 @@ var gravity = 20
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
+	print(get_multiplayer_authority())
 	pass
 
 func _ready():
 	if not is_multiplayer_authority(): return
-	# Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera.current = true
 	pass
 
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
-	# Add the gravity.
+	
+	# Add gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 

@@ -2,19 +2,22 @@
 
 [ext_resource type="PackedScene" uid="uid://c3i8tjhioxebx" path="res://zModels/ak.glb" id="1_bgoww"]
 [ext_resource type="Texture2D" uid="uid://ddlitq1pt4r2" path="res://Textures/materials/woodMaterial.jpg" id="2_7s0em"]
-[ext_resource type="Texture2D" uid="uid://dipqcdfe6femo" path="res://Textures/materials/metal.jpg" id="3_ud23u"]
+[ext_resource type="Texture2D" uid="uid://jpwh3w33artm" path="res://Textures/materials/rustyMetal.jpg" id="3_m1oxb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lofvf"]
-albedo_color = Color(0.716639, 0.731273, 0.69918, 1)
+albedo_color = Color(0.55562, 0.55562, 0.55562, 1)
 albedo_texture = ExtResource("2_7s0em")
+metallic = 0.05
 uv1_scale = Vector3(0.384, 0.384, 0.384)
+uv1_offset = Vector3(0.06, 0, 0)
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyiya"]
 cull_mode = 2
-albedo_color = Color(0.329158, 0.329158, 0.329158, 1)
-albedo_texture = ExtResource("3_ud23u")
-uv1_scale = Vector3(0.013, 0.013, 0.013)
+albedo_color = Color(0.550293, 0.550293, 0.550293, 1)
+albedo_texture = ExtResource("3_m1oxb")
+uv1_scale = Vector3(0.685, -0.77, 0.48)
+uv1_offset = Vector3(0.34, 0.205, 0.411)
 uv1_triplanar = true
 
 [node name="ak" instance=ExtResource("1_bgoww")]

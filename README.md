@@ -5,6 +5,7 @@
  - Habilidades
  - Agregar nuevas armas en el piso para que se puedan agarrar 
  - Agregar interfaz gráfica 
+ - Parry?
 
 ### Habilidades
  - Hook

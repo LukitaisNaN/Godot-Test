@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcl3b6vyrq515"]
+
+[ext_resource type="PackedScene" uid="uid://n7u68gwxid5o" path="res://zModels/Building.glb" id="1_i8h8f"]
+[ext_resource type="Texture2D" uid="uid://m5q7rjx2b881" path="res://Textures/materials/1K_concrete_basecolor.png" id="2_e567m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_440t2"]
+albedo_color = Color(0.312222, 0.209438, 0.153079, 1)
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awaaj"]
+albedo_texture = ExtResource("2_e567m")
+emission = Color(0.0353462, 0.0353462, 0.0353462, 1)
+emission_energy_multiplier = 0.0
+uv1_scale = Vector3(0.468, 0.095, 0.356)
+uv1_offset = Vector3(0, 0.604, 0.626)
+uv1_triplanar = true
+
+[node name="Building" instance=ExtResource("1_i8h8f")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_440t2")
+surface_material_override/1 = SubResource("StandardMaterial3D_awaaj")
