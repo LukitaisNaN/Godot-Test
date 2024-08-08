@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://b3trif0h43kgy"]
+[gd_scene load_steps=23 format=3 uid="uid://b3trif0h43kgy"]
 
 [ext_resource type="Script" path="res://Scenes/character.gd" id="1_mfelb"]
 [ext_resource type="Texture2D" uid="uid://ct8mra3my25sg" path="res://zModels/textures/capsule_CapsuleImg.png" id="2_tw1ai"]
+[ext_resource type="Texture2D" uid="uid://bb765wnkhsoak" path="res://addons/kenney_particle_pack/star_08.png" id="4_ba7tb"]
 [ext_resource type="PackedScene" uid="uid://c1he4hfvphs4d" path="res://Scenes/Weapons/ak.tscn" id="4_bty7f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qb3gc"]
@@ -328,6 +329,26 @@ properties/4/path = NodePath("Lhand:position")
 properties/4/spawn = true
 properties/4/replication_mode = 1
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ceo3n"]
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wlk2"]
+transparency = 1
+albedo_color = Color(1, 1, 0, 0.788235)
+albedo_texture = ExtResource("4_ba7tb")
+emission_enabled = true
+emission = Color(0.990107, 0.979847, 0, 1)
+emission_energy_multiplier = 10.0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_os3ts"]
+material = SubResource("StandardMaterial3D_6wlk2")
+size = Vector2(0.3, 0.3)
+orientation = 2
+
 [node name="character" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 2
@@ -369,3 +390,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.482085, -1.06428)
 replication_config = SubResource("SceneReplicationConfig_psk7q")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0.000217741, -5.66116e-05, -0.000217761, 1, -0.000182103, 5.65568e-05, 0.000182113, 1, 1.1041, 0.403039, -2.1691)
+amount = 2
+amount_ratio = 0.3
+lifetime = 1.2
+visibility_aabb = AABB(-0.406502, -0.657892, -0.3475, 0.66945, 0.735706, 0.695001)
+process_material = SubResource("ParticleProcessMaterial_ceo3n")
+draw_pass_1 = SubResource("PlaneMesh_os3ts")
