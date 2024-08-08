@@ -361,3 +361,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.482085, -1.06428)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_psk7q")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
