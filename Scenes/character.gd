@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var camera = $Camera3D
 @onready var anim_player = $AnimationPlayer
+@onready var flash = $ak/flash
 
 # Movement constants 
 const SPEED = 10.0
@@ -43,7 +44,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if Input.is_action_pressed("shoot"):
-		anim_player.play("shoot")
+		shoot()
 	elif velocity and not velocity.y:
 			anim_player.play("Run")
 	elif velocity.y:
@@ -60,8 +61,7 @@ func _input(event):
 		rotate_y(-event.relative.x * MOUSE_SENSIVITY)
 		camera.rotate_x(-event.relative.y * MOUSE_SENSIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
-	
-	
+
 	#if Input.is_action_pressed("shoot"):
 		# Code shooting
 		
@@ -70,7 +70,9 @@ func _input(event):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 	# Grab mouse
-	
 	if (Input.mouse_mode != Input.MOUSE_MODE_CAPTURED) and Input.is_action_just_pressed("shoot"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+func shoot():
+	anim_player.play("shoot")
+	
