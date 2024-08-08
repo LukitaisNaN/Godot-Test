@@ -11,7 +11,6 @@ const GRAVITY = 20
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
-	print(get_multiplayer_authority())
 	pass
 
 func _ready():
@@ -21,7 +20,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	if not is_multiplayer_authority(): return
+	if not is_multiplayer_authority() or (Input.mouse_mode != Input.MOUSE_MODE_CAPTURED): return
 	
 	# Add gravity.
 	if not is_on_floor():
@@ -57,12 +56,21 @@ func _physics_process(delta):
 func _input(event):
 	if not is_multiplayer_authority(): return
 	
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED):
 		rotate_y(-event.relative.x * MOUSE_SENSIVITY)
 		camera.rotate_x(-event.relative.y * MOUSE_SENSIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
 	
+	
 	#if Input.is_action_pressed("shoot"):
 		# Code shooting
 		
+	# Release mouse
+	if Input.is_action_just_pressed("quit"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
+	# Grab mouse
+	
+	if (Input.mouse_mode != Input.MOUSE_MODE_CAPTURED) and Input.is_action_just_pressed("shoot"):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
