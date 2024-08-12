@@ -64,7 +64,7 @@ func _input(event):
 	if event is InputEventMouseMotion and (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED):
 		rotate_y(-event.relative.x * MOUSE_SENSIVITY)
 		camera.rotate_x(-event.relative.y * MOUSE_SENSIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
+		camera.rotation.x = clamp(camera.rotation.x, -PI/5, PI/8)
 		
 	# Release mouse
 	if Input.is_action_just_pressed("quit"):

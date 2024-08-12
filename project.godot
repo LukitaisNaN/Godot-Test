@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Parkour-Test"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="res://Main/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://zModels/icon.svg"
 
 [display]
 
