@@ -7,7 +7,7 @@ extends CharacterBody3D
 # Movement constants 
 const SPEED = 10.0
 const JUMP_VELOCITY = 9
-const MOUSE_SENSIVITY = 0.01
+const MOUSE_SENSIVITY = 0.003
 const GRAVITY = 20
 
 var cooldown = 0.3
