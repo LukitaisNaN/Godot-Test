@@ -6,7 +6,7 @@ extends Node
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()
 
-const PLAYER = preload("res://Scenes/character.tscn")
+const PLAYER = preload("res://Player/character.tscn")
 
 func _ready():
 	pass
