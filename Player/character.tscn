@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Player/character.gd" id="1_0sh61"]
 [ext_resource type="PackedScene" uid="uid://c1he4hfvphs4d" path="res://Weapons/ak.tscn" id="2_u7j0p"]
-[ext_resource type="Texture2D" uid="uid://bb765wnkhsoak" path="res://addons/kenney_particle_pack/star_08.png" id="3_sv7me"]
 [ext_resource type="Texture2D" uid="uid://ct8mra3my25sg" path="res://zModels/textures/capsule_CapsuleImg.png" id="4_swyo1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsnh2"]
@@ -12,36 +11,6 @@ albedo_color = Color(0.658824, 0.776471, 0.431373, 1)
 material = SubResource("StandardMaterial3D_nsnh2")
 radius = 0.14
 height = 0.3
-
-[sub_resource type="Gradient" id="Gradient_qsh1y"]
-offsets = PackedFloat32Array(0, 0.269911, 0.969027)
-colors = PackedColorArray(0.988235, 0.988235, 0.988235, 0.0470588, 1, 0.839216, 0, 1, 1, 0.839216, 0, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_aaalp"]
-gradient = SubResource("Gradient_qsh1y")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ceo3n"]
-gravity = Vector3(0, 0, 0)
-scale_max = 2.05
-color_ramp = SubResource("GradientTexture1D_aaalp")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wlk2"]
-transparency = 1
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 0, 0.788235)
-albedo_texture = ExtResource("3_sv7me")
-emission_enabled = true
-emission = Color(1, 0.960784, 0.227451, 1)
-emission_energy_multiplier = 23.9
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_os3ts"]
-material = SubResource("StandardMaterial3D_6wlk2")
-size = Vector2(0.8, 0.8)
-orientation = 2
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_psk7q"]
 properties/0/path = NodePath(".:position")
@@ -415,8 +384,37 @@ _surfaces = [{
 }]
 shadow_mesh = SubResource("ArrayMesh_hums1")
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_7ri2k"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_76jix"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vqubu"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_y04ew"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jdfgu"]
+animation = &"Run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lgb7x"]
+animation = &"slide"
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_q7w1o"]
-graph_offset = Vector2(-252.296, 160.857)
+graph_offset = Vector2(-517.08, -128.302)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_7ri2k")
+nodes/OneShot/position = Vector2(0, -106.667)
+nodes/TimeScaleslide/node = SubResource("AnimationNodeTimeScale_76jix")
+nodes/TimeScaleslide/position = Vector2(-320, 0)
+nodes/idle/node = SubResource("AnimationNodeAnimation_vqubu")
+nodes/idle/position = Vector2(-160, 240)
+nodes/mainControl/node = SubResource("AnimationNodeBlend2_y04ew")
+nodes/mainControl/position = Vector2(320, 26.6667)
+nodes/output/position = Vector2(560, 26.6667)
+nodes/run/node = SubResource("AnimationNodeAnimation_jdfgu")
+nodes/run/position = Vector2(-373.333, -186.667)
+nodes/slide/node = SubResource("AnimationNodeAnimation_lgb7x")
+nodes/slide/position = Vector2(-560, 0)
+node_connections = [&"OneShot", 0, &"run", &"OneShot", 1, &"TimeScaleslide", &"TimeScaleslide", 0, &"slide", &"mainControl", 0, &"OneShot", &"mainControl", 1, &"idle", &"output", 0, &"mainControl"]
 
 [node name="character" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -431,17 +429,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0179881, -0.219708, 0.1946
 layers = 5
 mesh = SubResource("SphereMesh_u0pxb")
 skeleton = NodePath("../..")
-
-[node name="flash" type="GPUParticles3D" parent="weapon"]
-transform = Transform3D(1, 0.000217741, -5.66116e-05, -0.000217761, 1, -0.0001821, 5.65568e-05, 0.0001821, 1, -0.00196254, -0.036649, -1.7461)
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-visibility_aabb = AABB(-0.274777, -0.726042, -0.3475, 0.406, 0.872006, 0.695001)
-trail_lifetime = 0.8
-process_material = SubResource("ParticleProcessMaterial_ceo3n")
-draw_pass_1 = SubResource("PlaneMesh_os3ts")
 
 [node name="Lhand" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.595953, 0.803019, 0, -0.803019, 0.595953, 1.12162, 0.253752, -1.31548)
@@ -472,3 +459,8 @@ skeleton = NodePath("")
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeBlendTree_q7w1o")
 anim_player = NodePath("../AnimationPlayer")
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+parameters/TimeScaleslide/scale = 1.0
+parameters/mainControl/blend_amount = 0.0
