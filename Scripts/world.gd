@@ -29,11 +29,7 @@ func _on_host_pressed():
 func _on_join_pressed():
 	enet_peer.create_client(adress.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
-	
 	main_menu.hide()
-	
-	if not multiplayer.is_server():
-		show_menu("server not found")
 	## Handle disconnections
 	multiplayer.server_disconnected.connect(show_menu)
 	pass
