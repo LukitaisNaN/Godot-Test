@@ -94,4 +94,5 @@ func animate(animation_name:ANIMATIONS):
 		ANIMATIONS.RUN: anim_player.play("Run")
 		ANIMATIONS.JUMP: anim_player.play("jump")
 		ANIMATIONS.IDLE: anim_player.play("idle")
+		ANIMATIONS.SLIDE: anim_player.play("slide")
 	pass
