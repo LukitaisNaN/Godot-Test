@@ -30,9 +30,12 @@ func _on_join_pressed():
 	enet_peer.create_client(adress.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	
-	multiplayer.server_disconnected.connect(show_menu)
-	
 	main_menu.hide()
+	
+	if not multiplayer.is_server():
+		show_menu("server not found")
+	## Handle disconnections
+	multiplayer.server_disconnected.connect(show_menu)
 	pass
 
 func add_player(peer_id):
@@ -46,6 +49,8 @@ func remove_player(peer_id):
 	if player:
 		player.queue_free()
 
-func show_menu():
+func show_menu(myText:String):
 	main_menu.show()
+	adress.set_placeholder("Connection Failed")
+
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
