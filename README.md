@@ -12,6 +12,7 @@
  - Doble Salto (Boost?)
  - Dash
  - TP
+
 ### UI
 - Contador de balas y munición
 - Vida
