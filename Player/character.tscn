@@ -24,7 +24,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.08227, 0.00621963, -1.31548)]
+"values": [Vector3(1.08227, 0.154911, -1.31548)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -84,7 +84,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.12571, 0.160904, -0.427445)]
+"values": [Vector3(1.12571, 0.33836, -0.427445)]
 }
 
 [sub_resource type="Animation" id="Animation_txqra"]
@@ -219,6 +219,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.0958884, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.12571, 0.524187, -0.427445)]
 }
 
 [sub_resource type="Animation" id="Animation_tbolm"]
@@ -380,7 +392,7 @@ collision_layer = 2
 script = ExtResource("1_0sh61")
 
 [node name="Lhand" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.595953, 0.803019, 0, -0.803019, 0.595953, 1.08227, 0.00621963, -1.31548)
+transform = Transform3D(1, 0, 0, 0, 0.595953, 0.803019, 0, -0.803019, 0.595953, 1.08227, 0.154911, -1.31548)
 mesh = SubResource("SphereMesh_u0pxb")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -412,7 +424,7 @@ parameters/run_idle/blend_amount = 1.0
 parameters/s_j_g/blend_amount = 0
 
 [node name="weapon" parent="." instance=ExtResource("2_u7j0p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12571, 0.160904, -0.427445)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12571, 0.33836, -0.427445)
 
 [node name="Rhand" type="MeshInstance3D" parent="weapon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0179881, -0.219708, 0.194676)
