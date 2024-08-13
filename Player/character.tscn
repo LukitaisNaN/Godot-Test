@@ -12,26 +12,6 @@ material = SubResource("StandardMaterial3D_nsnh2")
 radius = 0.14
 height = 0.3
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_psk7q"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath("Camera3D:rotation")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-properties/3/path = NodePath("AnimationPlayer:current_animation")
-properties/3/spawn = true
-properties/3/replication_mode = 1
-properties/4/path = NodePath("Lhand:position")
-properties/4/spawn = true
-properties/4/replication_mode = 1
-properties/5/path = NodePath("weapon/flash:emitting")
-properties/5/spawn = true
-properties/5/replication_mode = 1
-
 [sub_resource type="Animation" id="Animation_vtwd3"]
 length = 0.001
 tracks/0/type = "value"
@@ -44,7 +24,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.12162, 0.253752, -1.31548)]
+"values": [Vector3(1.08227, 0.00621963, -1.31548)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -81,6 +61,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 2, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weapon:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("weapon:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.12571, 0.160904, -0.427445)]
 }
 
 [sub_resource type="Animation" id="Animation_txqra"]
@@ -148,6 +152,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(-1.20021, -0.355442, -0.482517), Vector3(-1.20021, -0.149534, -0.482517)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.12571, 0.160904, -0.427445), Vector3(1.12571, -0.197822, -0.427445)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.707085, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_hdndr"]
 resource_name = "jump"
@@ -158,10 +186,10 @@ tracks/0/path = NodePath("Lhand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.6),
-"transitions": PackedFloat32Array(0.116629, 1, 1, 0.112656),
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.116629, 1, 0.112656),
 "update": 0,
-"values": [Vector3(1.12162, 0.253752, -1.31548), Vector3(-1.17124, -0.28647, -1.03599), Vector3(-1.17143, -1.50594, 0.13138), Vector3(1.12162, 0.253752, -1.31548)]
+"values": [Vector3(1.12162, 0.253752, -1.31548), Vector3(-1.17143, -0.71304, -1.20604), Vector3(1.11, 0.308232, -1.31548)]
 }
 
 [sub_resource type="Animation" id="Animation_3an4d"]
@@ -179,6 +207,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [Vector3(1.12162, 0.253752, -1.31548), Vector3(1.12162, 0.320564, -1.31548)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0958884, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_tbolm"]
@@ -301,7 +341,6 @@ filters = ["Lhand:position", "Sphere:mesh:surface_0/material:emission_enabled", 
 animation = &"slide"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_q7w1o"]
-graph_offset = Vector2(-229.349, 250.714)
 nodes/grenade/node = SubResource("AnimationNodeAnimation_f86uw")
 nodes/grenade/position = Vector2(-133.333, 773.333)
 nodes/idle/node = SubResource("AnimationNodeAnimation_vqubu")
@@ -321,27 +360,37 @@ nodes/slide/node = SubResource("AnimationNodeAnimation_lgb7x")
 nodes/slide/position = Vector2(-133.333, 426.667)
 node_connections = [&"one_shot_control", 0, &"run", &"one_shot_control", 1, &"s_j_g", &"output", 0, &"run_idle", &"run_idle", 0, &"idle", &"run_idle", 1, &"one_shot_control", &"s_j_g", 0, &"slide", &"s_j_g", 1, &"jump", &"s_j_g", 2, &"grenade"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_yiawr"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("AnimationPlayer:current_animation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Lhand:position")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
 [node name="character" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 2
 script = ExtResource("1_0sh61")
 
 [node name="Lhand" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.595953, 0.803019, 0, -0.803019, 0.595953, 1.12162, 0.253752, -1.31548)
-layers = 5
+transform = Transform3D(1, 0, 0, 0, 0.595953, 0.803019, 0, -0.803019, 0.595953, 1.08227, 0.00621963, -1.31548)
 mesh = SubResource("SphereMesh_u0pxb")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.482085, -1.06428)
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_psk7q")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_7yqob")
 }
-playback_default_blend_time = 0.5
+playback_default_blend_time = 0.3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0699265, 0)
@@ -363,10 +412,13 @@ parameters/run_idle/blend_amount = 1.0
 parameters/s_j_g/blend_amount = 0
 
 [node name="weapon" parent="." instance=ExtResource("2_u7j0p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12571, 0.424745, -0.427445)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12571, 0.160904, -0.427445)
 
 [node name="Rhand" type="MeshInstance3D" parent="weapon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0179881, -0.219708, 0.194676)
 layers = 5
 mesh = SubResource("SphereMesh_u0pxb")
 skeleton = NodePath("../..")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_yiawr")
