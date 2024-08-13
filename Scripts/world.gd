@@ -50,3 +50,9 @@ func show_menu(myText:String):
 	adress.set_placeholder("Connection Failed")
 
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func _on_solo_pressed():
+	# Don't start server and play solo.
+	# Not so easy because
+	# "if not is_multiplayer_authority(): return" in player script.
+	pass

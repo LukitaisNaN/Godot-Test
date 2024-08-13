@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b3trif0h43kgy"]
+[gd_scene load_steps=29 format=3 uid="uid://b3trif0h43kgy"]
 
 [ext_resource type="Script" path="res://Player/character.gd" id="1_0sh61"]
 [ext_resource type="PackedScene" uid="uid://c1he4hfvphs4d" path="res://Weapons/ak.tscn" id="2_u7j0p"]
@@ -328,6 +328,42 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 2, 0), Vector3(0, 1.59386, 0), Vector3(0, 2, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("weapon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.12571, -0.389581, -0.307922)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weapon:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.10837, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Lhand:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.27, -0.422014, 0.340307)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7yqob"]
 _data = {
@@ -384,37 +420,50 @@ _surfaces = [{
 }]
 shadow_mesh = SubResource("ArrayMesh_hums1")
 
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_7ri2k"]
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_76jix"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f86uw"]
+animation = &"grenade_throw"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vqubu"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_y04ew"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8omhn"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_7ri2k"]
+filters = [".:position", ".:rotation", "Lhand:position", "Sphere:mesh:surface_0/material:emission_enabled", "weapon/Rhand:position"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jdfgu"]
 animation = &"Run"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_y04ew"]
+filter_enabled = true
+filters = ["Lhand:position", "Sphere:mesh:surface_0/material:emission_enabled", "weapon/Rhand:position", "weapon:position", "weapon:rotation"]
+
+[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_2l4b1"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lgb7x"]
 animation = &"slide"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_q7w1o"]
-graph_offset = Vector2(-517.08, -128.302)
-nodes/OneShot/node = SubResource("AnimationNodeOneShot_7ri2k")
-nodes/OneShot/position = Vector2(0, -106.667)
-nodes/TimeScaleslide/node = SubResource("AnimationNodeTimeScale_76jix")
-nodes/TimeScaleslide/position = Vector2(-320, 0)
+graph_offset = Vector2(-229.349, 250.714)
+nodes/grenade/node = SubResource("AnimationNodeAnimation_f86uw")
+nodes/grenade/position = Vector2(-133.333, 773.333)
 nodes/idle/node = SubResource("AnimationNodeAnimation_vqubu")
-nodes/idle/position = Vector2(-160, 240)
-nodes/mainControl/node = SubResource("AnimationNodeBlend2_y04ew")
-nodes/mainControl/position = Vector2(320, 26.6667)
-nodes/output/position = Vector2(560, 26.6667)
+nodes/idle/position = Vector2(613.333, 80)
+nodes/jump/node = SubResource("AnimationNodeAnimation_8omhn")
+nodes/jump/position = Vector2(-133.333, 613.333)
+nodes/one_shot_control/node = SubResource("AnimationNodeOneShot_7ri2k")
+nodes/one_shot_control/position = Vector2(453.333, 320)
+nodes/output/position = Vector2(1200, 293.333)
 nodes/run/node = SubResource("AnimationNodeAnimation_jdfgu")
-nodes/run/position = Vector2(-373.333, -186.667)
+nodes/run/position = Vector2(133.333, 346.667)
+nodes/run_idle/node = SubResource("AnimationNodeBlend2_y04ew")
+nodes/run_idle/position = Vector2(800, 240)
+nodes/s_j_g/node = SubResource("AnimationNodeBlend3_2l4b1")
+nodes/s_j_g/position = Vector2(160, 506.667)
 nodes/slide/node = SubResource("AnimationNodeAnimation_lgb7x")
-nodes/slide/position = Vector2(-560, 0)
-node_connections = [&"OneShot", 0, &"run", &"OneShot", 1, &"TimeScaleslide", &"TimeScaleslide", 0, &"slide", &"mainControl", 0, &"OneShot", &"mainControl", 1, &"idle", &"output", 0, &"mainControl"]
+nodes/slide/position = Vector2(-133.333, 426.667)
+node_connections = [&"one_shot_control", 0, &"run", &"one_shot_control", 1, &"s_j_g", &"output", 0, &"run_idle", &"run_idle", 0, &"idle", &"run_idle", 1, &"one_shot_control", &"s_j_g", 0, &"slide", &"s_j_g", 1, &"jump", &"s_j_g", 2, &"grenade"]
 
 [node name="character" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -457,10 +506,11 @@ mesh = SubResource("ArrayMesh_6fnaj")
 skeleton = NodePath("")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 tree_root = SubResource("AnimationNodeBlendTree_q7w1o")
 anim_player = NodePath("../AnimationPlayer")
-parameters/OneShot/active = false
-parameters/OneShot/internal_active = false
-parameters/OneShot/request = 0
-parameters/TimeScaleslide/scale = 1.0
-parameters/mainControl/blend_amount = 0.0
+parameters/one_shot_control/active = false
+parameters/one_shot_control/internal_active = false
+parameters/one_shot_control/request = 0
+parameters/run_idle/blend_amount = 1.0
+parameters/s_j_g/blend_amount = 0

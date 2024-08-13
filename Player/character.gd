@@ -2,7 +2,6 @@ extends CharacterBody3D
 
 @onready var camera = $Camera3D
 @onready var anim_player = $AnimationPlayer
-@onready var flash = $weapon/flash
 
 # Movement constants 
 const SPEED = 10.0
@@ -10,11 +9,13 @@ const JUMP_VELOCITY = 9
 const MOUSE_SENSIVITY = 0.003
 const GRAVITY = 20
 
-var cooldown = 0.3
+# Weapons Cooldowns
+var ak_cooldown = 0.3
 
 # Animations
-enum ANIMATIONS {JUMP, IDLE, RUN, SHOOT, SLIDE}
+enum ANIMATIONS {IDLE, RUN, JUMP, SHOOT, SLIDE, GRENADE}
 var current_animation:ANIMATIONS
+var my_tree:AnimationTree
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
@@ -24,6 +25,8 @@ func _ready():
 	if not is_multiplayer_authority(): return
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera.current = true
+	my_tree = $AnimationTree
+	# my_tree.set_active(true)
 	pass
 
 func _physics_process(delta):
@@ -53,10 +56,10 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		current_animation = ANIMATIONS.IDLE
-
+	
 	move_and_slide()
 	animate(current_animation)
-
+	
 func _input(event):
 	if not is_multiplayer_authority(): return
 	
@@ -64,7 +67,7 @@ func _input(event):
 	if event is InputEventMouseMotion and (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED):
 		rotate_y(-event.relative.x * MOUSE_SENSIVITY)
 		camera.rotate_x(-event.relative.y * MOUSE_SENSIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, -PI/5, PI/8)
+		camera.rotation.x = clamp(camera.rotation.x, -PI/3, PI/2)
 		
 	# Release mouse
 	if Input.is_action_just_pressed("quit"):
@@ -76,23 +79,50 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
-		current_animation =ANIMATIONS.SHOOT 
+		# my_tree.set("parameters/one_shot_control", 1)
+		
+	if Input.is_action_just_pressed("dash"):
+		my_tree.set("parameters/s_j_g", -1)
+		animate(ANIMATIONS.SLIDE)
+		
+	if Input.is_action_just_pressed("jump"):
+		my_tree.set("parameters/s_j_g", 0)
+		animate(ANIMATIONS.JUMP)
+	
 	pass
 
 func shoot():
-	if cooldown <= 0:
-		flash.emitting = true
-		cooldown = 0.3
-	
-func slide():
-	current_animation
+	# if ak_cooldown <= 0:
+		# add shooting code
+		# ak_cooldown = 0.3
+	animate(ANIMATIONS.SHOOT)
 	pass
 	
 func animate(animation_name:ANIMATIONS):
+	
 	match(animation_name):
-		ANIMATIONS.SHOOT: shoot()
-		ANIMATIONS.RUN: anim_player.play("Run")
-		ANIMATIONS.JUMP: anim_player.play("jump")
-		ANIMATIONS.IDLE: anim_player.play("idle")
-		ANIMATIONS.SLIDE: anim_player.play("slide")
+		
+		# Main animations
+		ANIMATIONS.SHOOT: 
+			anim_player.play("shoot")
+			# my_tree.set("parameters/one_shot_control/request/fire", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		ANIMATIONS.RUN: 
+			anim_player.play("Run")
+			# my_tree.set("parameters/run_idle", 1)
+		ANIMATIONS.IDLE: 
+			anim_player.play("idle")
+			# my_tree.set("parameters/run_idle", 0)
+		
+		# Actions
+		ANIMATIONS.JUMP: 
+			anim_player.play("jump")
+			# my_tree.set("parameters/one_shot_control/request/fire", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		ANIMATIONS.SLIDE: 
+			anim_player.play("slide")
+			# my_tree.set("parameters/one_shot_control/request/fire", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		
+		# Special 
+		ANIMATIONS.GRENADE:
+			anim_player.play("grenade_throw")
+			# my_tree.set("parameters/one_shot_control", 1)
 	pass
