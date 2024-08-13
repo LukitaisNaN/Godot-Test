@@ -20,3 +20,4 @@ mesh = SubResource("BoxMesh_34775")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -0.3)
+collide_with_areas = true

@@ -17,6 +17,6 @@ func _process(delta):
 		mesh.visible = false
 		ray.enabled = false
 		
-		if ray.get_collider().is_in_group("Player"):
+		if ray.get_collision_mask_value(2):
 			ray.get_collider().hit()
 	pass

@@ -4,8 +4,11 @@ extends CharacterBody3D
 @onready var anim_player = $AnimationPlayer
 
 @onready var ak = $weapon/RayCast3D
+
+
 var bullet = load("res://Weapons/bullet.tscn")
 var instance
+var health = 100
 
 # Movement constants 
 const SPEED = 10.0
@@ -104,6 +107,11 @@ func shoot():
 	instance.position = ak.global_position
 	instance.transform.basis = ak.global_transform.basis
 	get_parent().add_child(instance)
+
+func hit(dam):
+	health -= dam
+	if health <= 0:
+		queue_free()
 
 func animate(animation_name:ANIMATIONS):
 	
