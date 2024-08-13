@@ -1,7 +1,7 @@
 extends Node
 
 @onready var main_menu = $Canvas_Layer/Main_Menu
-@onready var adress = $Canvas_Layer/Main_Menu/VBoxContainer/ip_input
+@onready var address = $Canvas_Layer/Main_Menu/VBoxContainer/ip_input
 
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()
@@ -27,11 +27,9 @@ func _on_host_pressed():
 	pass
 
 func _on_join_pressed():
-	enet_peer.create_client(adress.text, PORT)
+	enet_peer.create_client(address.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	main_menu.hide()
-	## Handle disconnections
-	multiplayer.server_disconnected.connect(show_menu)
 	pass
 
 func add_player(peer_id):
@@ -47,7 +45,7 @@ func remove_player(peer_id):
 
 func show_menu(myText:String):
 	main_menu.show()
-	adress.set_placeholder("Connection Failed")
+	address.set_placeholder("Connection Failed")
 
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 

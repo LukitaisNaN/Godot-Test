@@ -79,6 +79,7 @@ placeholder_text = "127.0.0.1"
 alignment = 1
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Player/character.tscn")
 spawn_path = NodePath("..")
 
 [connection signal="pressed" from="Canvas_Layer/Main_Menu/VBoxContainer/Solo" to="." method="_on_solo_pressed"]
