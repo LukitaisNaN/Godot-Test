@@ -25,3 +25,7 @@ uv1_triplanar = true
 [node name="Cube" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_lofvf")
 surface_material_override/1 = SubResource("StandardMaterial3D_jyiya")
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8)
+target_position = Vector3(0, 0, -1)
