@@ -4,6 +4,10 @@ extends CharacterBody3D
 @onready var anim_player = $AnimationPlayer
 @onready var flash = $weapon/flash
 
+@onready var ak = $weapon/ak/RayCast3D
+var bullet = load("res://Weapons/bullet.tscn")
+var instance
+
 # Movement constants 
 const SPEED = 10.0
 const JUMP_VELOCITY = 9
@@ -83,6 +87,12 @@ func shoot():
 	if cooldown <= 0:
 		flash.emitting = true
 		cooldown = 0.3
+	
+	instance = bullet.instantiate()
+	instance.position = ak.global_position
+	instance.transform.basis = ak.global_transform.basis
+	get_parent().add_child(instance)
+	
 	
 func slide():
 	current_animation
